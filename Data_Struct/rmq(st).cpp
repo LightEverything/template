@@ -1,3 +1,12 @@
+/**
+ * @file rmq(st).cpp
+ * @author lightEvething (wanxinnb@outlook.com)
+ * @brief rmq的st表版
+ * @date 2022-07-09
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <iostream>
 #include <cmath>
 #include <cstdio>
