@@ -22,7 +22,7 @@ void rmqInit()
 {
     for (int i = 1; i <= n; i++)
         rmq[i][0] = a[i];
-    int m = log(n) / log(2);
+    int m = log2(n);
     for (int j = 1; j <= m; j++)
     {
         int t = n - (1 << j) + 1;
@@ -33,7 +33,7 @@ void rmqInit()
 
 int rmqFind(int l, int r)
 {
-    int m = log(r -l + 1) / log(2);
+    int m = log2(r -l + 1);
     return max(rmq[l][m], rmq[r - (1 << m) + 1][m]);
 }
 
