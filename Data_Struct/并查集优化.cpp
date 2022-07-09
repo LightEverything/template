@@ -21,7 +21,7 @@ int ranks[maxn]; // 秩
 
 void init()
 {
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i <= n; i++)
     {
         fa[i] = i;
         ranks[i] = 1;
