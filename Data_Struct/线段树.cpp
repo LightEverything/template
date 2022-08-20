@@ -1,3 +1,12 @@
+/**
+ * @file 线段树.cpp
+ * @author lighteverthing (wanxinnb@outlook.com)
+ * @brief  普通线段树，不带结构体
+ * @date 2022-08-20
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <iostream>
 
 using namespace std;

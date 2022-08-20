@@ -1,7 +1,7 @@
 /**
  * @file rmq(st).cpp
  * @author lightEvething (wanxinnb@outlook.com)
- * @brief rmq的st表版
+ * @brief rmq的st表版(欧拉序)
  * @date 2022-07-09
  * 
  * @copyright Copyright (c) 2022

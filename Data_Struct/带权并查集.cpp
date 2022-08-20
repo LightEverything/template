@@ -1,3 +1,12 @@
+/**
+ * @file 带权并查集.cpp
+ * @author lighteverthing (wanxinnb@outlook.com)
+ * @brief  并查集的带size和front版本
+ * @date 2022-08-20
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>

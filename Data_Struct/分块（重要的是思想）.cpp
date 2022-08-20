@@ -1,3 +1,12 @@
+/**
+ * @file 分块（重要的是思想）.cpp
+ * @author lighteverthing (wanxinnb@outlook.com)
+ * @brief 分块模板不重要， 重要的是思想
+ * @date 2022-08-20
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <iostream>
 #include <cmath>
 #include <cstdio>

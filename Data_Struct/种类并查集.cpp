@@ -1,3 +1,12 @@
+/**
+ * @file 种类并查集.cpp
+ * @author lighteverthing (wanxinnb@outlook.com)
+ * @brief  种类并查集(多个普通并查集并联)
+ * @date 2022-08-20
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <iostream>
 #include <cmath>
 #include <cstdio>

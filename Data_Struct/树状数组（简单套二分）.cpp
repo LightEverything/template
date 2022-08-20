@@ -1,3 +1,12 @@
+/**
+ * @file 树状数组（简单套二分）.cpp
+ * @author lighteverthing (wanxinnb@outlook.com)
+ * @brief 普通求和线段树
+ * @date 2022-08-20
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <iostream>
 #include <cstring>
 #include <map>

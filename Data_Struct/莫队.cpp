@@ -1,3 +1,12 @@
+/**
+ * @file 莫队.cpp
+ * @author lighteverthing (wanxinnb@outlook.com)
+ * @brief 离线算法，将提问的分布进行分块
+ * @date 2022-08-20
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <iostream>
 #include <algorithm>
 #include <cmath>

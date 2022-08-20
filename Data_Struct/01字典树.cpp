@@ -1,3 +1,12 @@
+/**
+ * @file 01字典树.cpp
+ * @author lighteverthing (wanxinnb@outlook.com)
+ * @brief 将一个数的二进制的每一位绑定在trie 上面，方便求异或值
+ * @date 2022-08-20
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <iostream>
 #include <cmath>
 #include <vector>

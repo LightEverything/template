@@ -1,3 +1,12 @@
+/**
+ * @file 树链剖分.cpp
+ * @author lighteverthing (wanxinnb@outlook.com)
+ * @brief 树链剖分 + 线段树
+ * @date 2022-08-20
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <iostream>
 #include <cmath>
 #include <cstdio>
