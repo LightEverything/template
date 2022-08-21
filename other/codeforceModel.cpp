@@ -16,6 +16,11 @@
 
 using namespace std;
 
+inline void solve()
+{
+
+}
+
 int main(int argc, char** argv)
 {
     int T;
