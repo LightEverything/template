@@ -100,7 +100,7 @@
                 <mxCell id="100" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="83" vertex="1">
                     <mxGeometry y="224" width="180" height="42" as="geometry"/>
                 </mxCell>
-                <mxCell id="101" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" parent="100" vertex="1">
+                <mxCell id="101" value="-2" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=#6a00ff;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontColor=#ffffff;strokeColor=#3700CC;" parent="100" vertex="1">
                     <mxGeometry width="60" height="42" as="geometry">
                         <mxRectangle width="60" height="42" as="alternateBounds"/>
                     </mxGeometry>
