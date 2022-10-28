@@ -14,6 +14,7 @@
 #include <vector>
 #include <stack>
 #include <map>
+#include <cstring>
 
 using namespace std;
 
