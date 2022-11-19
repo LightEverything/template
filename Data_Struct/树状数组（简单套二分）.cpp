@@ -11,7 +11,7 @@ class FenwickTree
 {
 public:
     static constexpr int maxn = 1E5 + 7;
-    T tree[maxn];
+    T tree[maxn] = {0};
     int rg;
 
     FenwickTree(int rg)
