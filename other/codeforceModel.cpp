@@ -15,8 +15,15 @@
 #include <stack>
 #include <map>
 #include <cstring>
+#include <random>
+#include <climits>
 
 using namespace std;
+
+#ifdef random
+mt19937 engine(random_device{}())
+uniform_int_distribution<long long> rd(1, LLONG_MAX);
+#endif
 
 inline void solve()
 {
