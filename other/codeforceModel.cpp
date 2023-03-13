@@ -20,7 +20,7 @@
 
 using namespace std;
 
-#ifdef random
+#ifdef  RANDOM 
 mt19937 engine(random_device{}())
 uniform_int_distribution<long long> rd(1, LLONG_MAX);
 #endif
