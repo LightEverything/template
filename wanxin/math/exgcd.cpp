@@ -10,7 +10,7 @@ int exgcd(long long a, long long b, long long & x, long long & y)
         x = 1, y = 0;
         return a;
     }
-    int ans = exgcd(b, a % b, y, x);
+    int ans = exgcd(b, a % b, y, x); // x = y, y = x - (a / b) * y;
     y = y - a /b * x;
     return ans;
 }
@@ -27,3 +27,6 @@ int main(int argc, char** argv)
     cout << ansx;
     return 0;
 }
+
+
+// 求大于0的第一个满足题意的数字 ((ans % b) + b) % b
