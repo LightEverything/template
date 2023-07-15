@@ -1,19 +1,18 @@
 #include <iostream>
 #include <cmath>
-#include <cstdio>
-#include <initializer_list>
+#include <vector>
 #include <cstring>
+#include <iomanip>
 
 using namespace std;
-const int mod = 1000000007;
-const int maxn = 105;
-#define int long long
 
 template<typename T>
 class Matrix
 {
 public:
-    static const int maxn = 2;
+    static const int maxn = 105;
+    static const int mod = 1E9 + 7;
+    static const int eps = 1E-7;
     T val[maxn][maxn];
 
     Matrix(initializer_list<initializer_list<T>> l)
@@ -88,6 +87,45 @@ public:
                     return false;
         return true;
     }
+
+
+    // 高斯消元仅用于double矩阵
+    bool gauss(double ans[], int n)
+    {
+        for (int i = 0; i < n; i ++)
+        {
+            int r = i;
+            for (int j = i + 1; j < n; j ++)
+                if (fabs(val[r][i]) < fabs(val[j][i]))
+                    r = j;
+
+            if (r != i) swap(val[r], val[i]);
+
+            if (fabs(val[r][i]) <= eps)
+                return false;
+
+            double div = val[i][i];
+
+            for (int j = i; j <= n; j ++)
+                val[i][j] /= div;
+
+            for (int j = i + 1; j < n; j ++)
+            {
+                div = val[j][i];
+                for (int k = i; k <= n; k ++)
+                    val[j][k] -= val[i][k] * div;
+            }
+        }
+        
+        ans[n - 1] = val[n - 1][n];
+        for (int i = n - 2; i >= 0; i --)
+        {
+            ans[i] = val[i][n];
+            for (int j = i + 1; j < n; j ++)
+                ans[i] -= ans[j] * val[i][j];
+        }
+        return true;
+    }
 };
 
 template<typename T>
@@ -115,26 +153,31 @@ Matrix<T> matrixPow(Matrix<T> &a, int b)
     return ans;
 }
 
-Matrix<long long> f;
-
-signed main()
+int main()
 {
-    int n, m;
-    cin >> n >> m;
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
 
-    f.val[0][0] = 2;
-    for (int i = 1; i <= m - 1; i ++)
-        f.val[i][0] = 1;
-    Matrix<long long> a;
-    a.val[0][0] = 1, a.val[0][m - 1] = 1;
-    for (int i = 1; i < m; i ++)
-        a.val[i][i - 1] = 1;
-    if (n < m)
+    int n;
+    cin >> n;
+
+    Matrix<double> a;
+    for (int i = 0; i < n; i ++)
+    for (int j = 0; j <= n; j ++)
     {
-        cout << 1;
-        return 0;
+        cin >> a.val[i][j];
     }
-    f = matrixPow(a, n - m) * f;
-
-    cout << f.val[0][0];
+    
+    double ans[105];
+    if (!a.gauss(ans, n))
+    {
+        cout << "No Solution" << '\n';
+    }
+    else 
+    {
+        for (int i = 0; i < n; i ++)
+            cout << fixed << setprecision(2) << ans[i] << '\n';
+    }
+    
 }
