@@ -1,12 +1,12 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
-#include <string>
-#include <algorithm>
 #include <map>
+#include <algorithm>
 
 using namespace std;
-const int mod = 998244353;
+
+const int mod = 167772161;
 long long qpow(long long a, long long b, long long mod = mod)
 {
     long long ans = 1;
@@ -241,28 +241,12 @@ public:
         return ans.modxk(m);
     }
 
-    //均可
-    Poly pow(long long k, int modx, long long k2 = 0)
+    Poly pow(long long k)
     {
-        k2 = (k2 == 0 ? k : k2);
-        long long t = 0;
-        for (t = 0; t < size() && a[t] == 0; t ++);
-        long long inv = qpow(a[t], mod - 2);
-        long long num = a[t];
-
-        for (int i = 0; i < size() - t; i ++)
-            a[i] = a[i + t] * inv % mod;
-        for (int i = size() - t; i < size(); i ++)
-            a[i] = 0;
-
         auto ans = log(size());
-
-        Poly tmp;
-        if (t * k > modx)
-            tmp = Poly{0};
-        else 
-            tmp = Poly(t * k + 1), tmp[t * k] = qpow(num, k2);
-        return ((ans * k).exp(size()) * tmp).modxk(modx);
+        for (int i = 0; i < size(); i ++)
+            ans[i] = ans[i] * k % mod;
+        return ans.exp(size());
     }
 
     int get_phi(int a)
@@ -330,47 +314,47 @@ public:
                 minrt = g;
                 break;
             }
-        } 
+        }
         return minrt;
     }
+
 };
+
+const int maxn = 2E5 + 7;
+long long fac[maxn], invfac[maxn];
+
+inline void initFacAndC(int n)
+{
+    fac[0] = 1;
+    for (int i = 1; i <= n; i ++)
+        fac[i] = fac[i - 1] *i % mod;
+    invfac[n] = qpow(fac[n], mod - 2);
+    invfac[0] = 1;
+
+    for (int i = n - 1; i >= 1; i --)
+        invfac[i] = (i + 1) * invfac[i + 1] % mod;
+}
 
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
+    int n;
+    cin >> n;
+    initFacAndC(n);
 
-    long long n;
-    string k;
-    long long k1 = 0, k2 = 0, k3 = 0;
-    cin >> n >> k;
+    int len = 1;
+    while (len < n + 1) len <<= 1;
+    Poly<long long> fa(len), fb(len);
 
-    // reverse(k.begin(), k.end());
-    for (int i = 0; i < k.size(); i ++)
+    for (int i = 0; i <= n; i ++)
     {
-        k1 = (k1 * 10 + k[i] - '0') % mod;
-        k2 = (k2 * 10 + k[i] - '0') % (mod - 1);
+        fa[i] = qpow(i, n) * invfac[i] % mod;
+        fb[i] = (qpow(-1, i) * invfac[i] % mod + mod) % mod;
     }
-
-    for (int i = 0; i < min(7, int(k.size())); i ++)
-        k3 = (k3 * 10 + k[i] - '0') % mod;
-
-    Poly<long long> f(n);
-    for (int i = 0; i < n; i ++)
-        cin >> f[i];
-
-    if (f[0] == 0 && k3 >= n)
-    {
-        for (int i = 0; i < n; i++)
-        {
-            cout << 0 << ' ';
-        }
-        return 0;
-    }
-    f = f.pow(k1, n, k2);
-    for (int i = 0; i < n; i ++)
-    {
-        cout << f[i] << ' ';
-    }
+    fa = fa * fb;
+    
+    for (int i = 0; i <= n; i ++)
+        cout << fa[i] << " ";
 }

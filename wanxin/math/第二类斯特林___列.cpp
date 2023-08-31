@@ -1,12 +1,13 @@
+
 #include <iostream>
 #include <cmath>
 #include <vector>
-#include <string>
-#include <algorithm>
 #include <map>
+#include <algorithm>
 
 using namespace std;
-const int mod = 998244353;
+
+const int mod = 167772161;
 long long qpow(long long a, long long b, long long mod = mod)
 {
     long long ans = 1;
@@ -335,42 +336,40 @@ public:
     }
 };
 
+const int maxn = 2E5 + 7;
+long long fac[maxn], invfac[maxn];
+
+inline void initFacAndC(int n)
+{
+    fac[0] = 1;
+    for (int i = 1; i <= n; i ++)
+        fac[i] = fac[i - 1] *i % mod;
+    invfac[n] = qpow(fac[n], mod - 2);
+    invfac[0] = 1;
+
+    for (int i = n - 1; i >= 1; i --)
+        invfac[i] = (i + 1) * invfac[i + 1] % mod;
+}
+
+
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
 
-    long long n;
-    string k;
-    long long k1 = 0, k2 = 0, k3 = 0;
+    int n, k;
     cin >> n >> k;
+    ++n;
+    initFacAndC(max(n, k));
 
-    // reverse(k.begin(), k.end());
-    for (int i = 0; i < k.size(); i ++)
-    {
-        k1 = (k1 * 10 + k[i] - '0') % mod;
-        k2 = (k2 * 10 + k[i] - '0') % (mod - 1);
-    }
+    int len = 1;
+    while (len < n) len <<= 1;
+    Poly<long long> f(len);
 
-    for (int i = 0; i < min(7, int(k.size())); i ++)
-        k3 = (k3 * 10 + k[i] - '0') % mod;
-
-    Poly<long long> f(n);
+    for (int i = 1; i < n; i ++)
+        f[i] = invfac[i];
+    f = f.pow(k, n);
     for (int i = 0; i < n; i ++)
-        cin >> f[i];
-
-    if (f[0] == 0 && k3 >= n)
-    {
-        for (int i = 0; i < n; i++)
-        {
-            cout << 0 << ' ';
-        }
-        return 0;
-    }
-    f = f.pow(k1, n, k2);
-    for (int i = 0; i < n; i ++)
-    {
-        cout << f[i] << ' ';
-    }
+        cout << f[i] * fac[i] % mod * invfac[k] % mod << ' ';
 }

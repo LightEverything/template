@@ -90,30 +90,9 @@ void solve()
             break;
         }
     }
-
-    if (minrt == 0)
-        cout << 0 << '\n'
-             << '\n';
-    else
-    {
-        int prod = 1;
-        for (int i = 1; i <= num; i++)
-        {
-            prod = (1ll * prod * minrt) % n;
-            if (__gcd(i, num) == 1)
-            {
-                ans[++cnt] = prod;
-            }
-        }
-        sort(ans + 1, ans + 1 + cnt);
-        cout << cnt << '\n';
-        for (int i = d; i <= cnt; i += d)
-        {
-            cout << ans[i] << ' ';
-        }
-        cout << '\n';
-    }
+    cout << minrt;
 }
+
 signed main()
 {
     ios::sync_with_stdio(0);
